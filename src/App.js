@@ -1,7 +1,7 @@
 import './App.css';
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Header from './Components/Header/header';
-import MatchSelector from './Components/MatchSelector/match.selector';
+import Matches from './Components/Matches/matches';
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
 
         </Route>
         <Route exact path="/stats">
-          <MatchSelector />
+          <Matches />
         </Route>
       </Switch>
     </Router>
