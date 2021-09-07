@@ -17,7 +17,14 @@ const registry = [
 export default function Matches() {
   const [matches, setMatches] = useState([])
   const [matchIndex, setMatchIndex] = useState(0)
+  const [matchData, setMatchData] = useState([]);
+  const [summaryStats, setSummaryStats] = useState([]);
 
+  const selectMatch = (index) => {
+    // const matchIndex = matches.findIndex((obj => obj.match === index))
+    setMatchData(matches[index])
+    setSummaryStats(matches[index].data.summary_stats)
+  }
   useEffect(() => {
     if (!matches.length) {
 
@@ -47,7 +54,7 @@ export default function Matches() {
         const support_stats = [];
         let map = rows[1][1]
         console.log(rows.length)
-        // rows.forEach(row => {
+
         const asyncIterable = {
           [Symbol.asyncIterator]() {
             return {
@@ -64,7 +71,7 @@ export default function Matches() {
         };
         (async function () {
           for await (let num of asyncIterable) {
-            if (num === rows.length) { console.log("Finished Row: " + num); return "finished" } else {
+            if (num === rows.length) { console.log("Finished Row: " + num) } else {
               const row = rows[num]
               switch (row[2]) {
                 case "atk_chains":
@@ -228,7 +235,6 @@ export default function Matches() {
             }
           }
         })();
-        // });
         const runSpikeLog = () => {
           spike_log.forEach((x, index) => {
             if (index === 0) { console.log("started spike log") }
@@ -310,6 +316,24 @@ export default function Matches() {
             const cmIndex = y.actions.findIndex((obj => obj.name === "clear mind"))
             summary_stats[playerIndex].cms = y.actions[cmIndex].count
           })
+          summary_stats.sort((a, b) => {
+            if (a.otp < b.otp) {
+              return 1
+            }
+            if (a.otp > b.otp) {
+              return -1
+            }
+            return null
+          })
+          summary_stats.sort((a, b) => {
+            if (a.team < b.team) {
+              return -1
+            }
+            if (a.team > b.team) {
+              return 1
+            }
+            return null
+          })
         }
         const matchData = {
           map: map,
@@ -330,7 +354,6 @@ export default function Matches() {
           support_powers: support_powers,
           support_stats: support_stats,
         }
-        console.log(rows)
         let newArr = matches
         newArr.push({ match: rows[1][1], data: matchData })
         setMatches([...newArr])
@@ -339,9 +362,9 @@ export default function Matches() {
   }, [matches])
   return (
     <Container>
-      <MatchSelector matches={matches} setMatchIndex={setMatchIndex} />
+      <MatchSelector matches={matches} setMatchIndex={setMatchIndex} matchData={matchData} summaryStats={summaryStats} selectMatch={selectMatch} />
       <Row>{matchIndex}</Row>
-      <PlayerOverview />
+      <PlayerOverview summaryStats={summaryStats} matchIndex={matchIndex} />
     </Container>
   )
 }
