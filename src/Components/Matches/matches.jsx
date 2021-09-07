@@ -3,6 +3,9 @@ import { parse } from 'papaparse';
 import { Col, Container, Row, Button } from 'react-bootstrap';
 import MatchSelector from '../MatchSelector/match.selector';
 import PlayerOverview from '../PlayerOverview/player.overview';
+import Summary from '../Summary/summary';
+import SupportMain from '../SupportMain/support.main';
+import ScoreChart from '../ScoreChart/score.chart';
 
 const registry = [
   { "file": "/Data/1.cohdemo.csv" },
@@ -19,11 +22,26 @@ export default function Matches() {
   const [matchIndex, setMatchIndex] = useState(0)
   const [matchData, setMatchData] = useState([]);
   const [summaryStats, setSummaryStats] = useState([]);
+  const [summary, setSummary] = useState([]);
+  const [scoreLog, setScoreLog] = useState([])
 
   const selectMatch = (index) => {
     // const matchIndex = matches.findIndex((obj => obj.match === index))
+    const sortScoreLog = matches[index].data.score_log
+    sortScoreLog.sort((a, b) => {
+      if (parseInt(a.time) < parseInt(b.time)) {
+        return -1
+      }
+      if (parseInt(a.time) > parseInt(b.time)) {
+        return 1
+      }
+      return null
+    })
     setMatchData(matches[index])
     setSummaryStats(matches[index].data.summary_stats)
+    setSummary(matches[index].data.summary)
+    setScoreLog(sortScoreLog)
+    console.log(sortScoreLog)
   }
   useEffect(() => {
     if (!matches.length) {
@@ -361,10 +379,23 @@ export default function Matches() {
     }
   }, [matches])
   return (
-    <Container>
+    <Container fluid>
       <MatchSelector matches={matches} setMatchIndex={setMatchIndex} matchData={matchData} summaryStats={summaryStats} selectMatch={selectMatch} />
       <Row>{matchIndex}</Row>
-      <PlayerOverview summaryStats={summaryStats} matchIndex={matchIndex} />
+      <Row>
+        <Col xs={12} md={8}>
+          <PlayerOverview summaryStats={summaryStats} matchIndex={matchIndex} />
+        </Col>
+        <Col xs={12} md={4}>
+          <Summary summary={summary} />
+          <SupportMain summaryStats={summaryStats} />
+        </Col>
+      </Row>
+      <Row>
+        <Col>
+          <ScoreChart scoreLog={scoreLog} />
+        </Col>
+      </Row>
     </Container>
   )
 }
