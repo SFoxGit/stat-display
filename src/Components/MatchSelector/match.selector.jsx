@@ -10,7 +10,7 @@ export default function MatchSelector(props) {
     <Container>
     <Row>
       {matches.length ?
-        matches.map((name, index) => <Col key={name.match}><Button style={{width: "100%"}} variant="secondary" className="fw-bold" onClick={() => {setMatchIndex(index); selectMatch(index)}}>{name.match}</Button></Col>)
+        matches.map((name, index) => <Col key={name.match + index}><Button style={{width: "100%"}} variant="secondary" className="fw-bold" onClick={() => {setMatchIndex(index); selectMatch(index)}}>{name.match}</Button></Col>)
         :
         null}
     </Row>

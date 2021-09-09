@@ -28,6 +28,11 @@ export default function Matches() {
   const selectMatch = (index) => {
     // const matchIndex = matches.findIndex((obj => obj.match === index))
     const sortScoreLog = matches[index].data.score_log
+    for (const score of sortScoreLog) {
+      score.time = parseInt(score.time)
+      score.blue = parseInt(score.blue)
+      score.red = parseInt(score.red)
+    }
     sortScoreLog.sort((a, b) => {
       if (parseInt(a.time) < parseInt(b.time)) {
         return -1
