@@ -1,5 +1,32 @@
 import React from 'react'
-import { Table } from 'react-bootstrap'
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+
+const StyledTableCell = withStyles((theme) => ({
+  head: {
+    backgroundColor: theme.palette.common.black,
+    color: theme.palette.common.white,
+  },
+  body: {
+    fontSize: 14,
+    backgroundColor: theme.palette.success.dark,
+    color: theme.palette.common.white,
+
+  },
+}))(TableCell);
+
+const StyledTableRow = withStyles((theme) => ({
+  root: {
+    '&:nth-of-type(odd)': {
+      backgroundColor: theme.palette.action.hover,
+    },
+  },
+}))(TableRow);
 
 export default function SupportMain(props) {
   const summaryStats = props.summaryStats
@@ -19,39 +46,41 @@ export default function SupportMain(props) {
     fontSize: "18px"
   };
   return (
-    <Table striped bordered hover variant="dark" style={{ boxShadow: "7px 7px 5px black" }}>
-      <thead>
-        <tr style={{ textAlign: 'center' }}>
-          <th>player</th>
-          <th>Heal Before Phase</th>
-          <th>HO b4 Kill</th>
-          <th>AP b4 Kill</th>
-          <th>Heal After Death</th>
-          <th>Heal After Phase</th>
-          <th>CMs</th>
-        </tr>
-      </thead>
-      <tbody>
-        {summaryStats.length ? summaryStats.map(data => {
-          
-          let teamStyle;
-          if (data.team === "BLU") { teamStyle = blueTeam }
-          if (data.team === "RED") { teamStyle = redTeam }
-          if (data.ohp) {
-            return (
-              <tr style={teamStyle} key={data.player}>
-                <td>{data.player}</td>
-                <td>{data.ohp ? data.healsBeforePS : null}</td>
-                <td>{data.ohp ? data.hoBeforeDeath : null}</td>
-                <td>{data.ohp ? data.apBeforeDeath : null}</td>
-                <td>{data.ohp ? data.healsAfterDeath : null}</td>
-                <td>{data.ohp ? data.healsAfterPS : null}</td>
-                <td>{data.ohp ? data.cms : null}</td>
-              </tr>
-            )
-          } else return null
-        }) : null}
-      </tbody>
-    </Table>
+    <TableContainer>
+      <Table  variant="dark" style={{ boxShadow: "7px 7px 5px black" }}>
+        <TableHead>
+          <StyledTableRow style={{ textAlign: 'center' }}>
+            <StyledTableCell>player</StyledTableCell>
+            <StyledTableCell>Heal Before Phase</StyledTableCell>
+            <StyledTableCell>HO b4 Kill</StyledTableCell>
+            <StyledTableCell>AP b4 Kill</StyledTableCell>
+            <StyledTableCell>Heal After Death</StyledTableCell>
+            <StyledTableCell>Heal After Phase</StyledTableCell>
+            <StyledTableCell>CMs</StyledTableCell>
+          </StyledTableRow>
+        </TableHead>
+        <TableBody>
+          {summaryStats.length ? summaryStats.map(data => {
+
+            let teamStyle;
+            if (data.team === "BLU") { teamStyle = blueTeam }
+            if (data.team === "RED") { teamStyle = redTeam }
+            if (data.ohp) {
+              return (
+                <StyledTableRow style={teamStyle} key={data.player}>
+                  <StyledTableCell>{data.player}</StyledTableCell>
+                  <StyledTableCell>{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
+                  <StyledTableCell>{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell>{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell>{data.ohp ? data.healsAfterDeath : null}</StyledTableCell>
+                  <StyledTableCell>{data.ohp ? data.healsAfterPS : null}</StyledTableCell>
+                  <StyledTableCell>{data.ohp ? data.cms : null}</StyledTableCell>
+                </StyledTableRow>
+              )
+            } else return null
+          }) : null}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }

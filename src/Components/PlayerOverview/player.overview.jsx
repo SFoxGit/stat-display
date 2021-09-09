@@ -1,5 +1,12 @@
 import React from 'react'
-import {  Table, } from 'react-bootstrap'
+import { withStyles, makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
 
 export default function PlayerOverview(props) {
   const summaryStats = props.summaryStats
@@ -18,53 +25,55 @@ export default function PlayerOverview(props) {
   };
 
   return (
-    <Table striped bordered hover variant="dark" className="rounded" key={matchIndex} style={{boxShadow: "7px 7px 5px black",  fontWeight: "bolder", fontSize: "18px", textShadow: "3px 3px 0 black",}}>
-      <thead>
-        <tr style={{ textAlign: 'center' }}>
-          <th>player</th>
-          <th>team</th>
-          <th>powerset</th>
-          <th>deaths</th>
-          <th>targets</th>
-          <th>survival</th>
-          <th>otp</th>
-          <th>heal</th>
-          <th>atks</th>
-          <th>KP</th>
-          <th>Atks on Kill</th>
-          <th>Atks b4 PS</th>
-          <th>Atk after Kill</th>
-          <th>Atks in2 PS</th>
-        </tr>
-      </thead>
-      <tbody>
-        {summaryStats.length ? summaryStats.map(data => {
-          let teamStyle;
-          if (data.team === "BLU") { teamStyle = blueTeam }
-          if (data.team === "RED") { teamStyle = redTeam }
-          return (
-            <tr style={teamStyle} key={data.player}>
-              <td>{data.player}</td>
-              <td>{data.team}</td>
-              <td>{data.powersets}</td>
-              <td>{data.deaths}</td>
-              <td>{data.targets}</td>
-              <td>{(data.survival * 100).toFixed(2) + '%'}</td>
-              <td>{data.otp > 0.01 ? (data.otp * 100).toFixed(2) + '%' : null}</td>
-              <td>{data.ohp ? (data.ohp * 100).toFixed(2) + '%' : null}</td>
-              <td>{data.atks}</td>
-              <td>{data.kPart > 0.01 ? (data.kPart * 100).toFixed(2) + '%' : null}</td>
-              <td>{data.atksOnDeath}</td>
-              <td>{data.atksBeforePS}</td>
-              <td>{data.atksAfterDeath}</td>
-              <td>{data.atksIntoPS}</td>
-            </tr>
-          )
+    <TableContainer>
+      <Table variant="dark" className="rounded" key={matchIndex} style={{ boxShadow: "7px 7px 5px black", fontWeight: "bolder", fontSize: "18px", textShadow: "3px 3px 0 black", }}>
+        <TableHead>
+          <TableRow style={{ textAlign: 'center' }}>
+            <TableCell>player</TableCell>
+            <TableCell>team</TableCell>
+            <TableCell>powerset</TableCell>
+            <TableCell>deaths</TableCell>
+            <TableCell>targets</TableCell>
+            <TableCell>survival</TableCell>
+            <TableCell>otp</TableCell>
+            <TableCell>heal</TableCell>
+            <TableCell>atks</TableCell>
+            <TableCell>KP</TableCell>
+            <TableCell>Atks on Kill</TableCell>
+            <TableCell>Atks b4 PS</TableCell>
+            <TableCell>Atk after Kill</TableCell>
+            <TableCell>Atks in2 PS</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {summaryStats.length ? summaryStats.map(data => {
+            let teamStyle;
+            if (data.team === "BLU") { teamStyle = blueTeam }
+            if (data.team === "RED") { teamStyle = redTeam }
+            return (
+              <TableRow style={teamStyle} key={data.player}>
+                <TableCell>{data.player}</TableCell>
+                <TableCell>{data.team}</TableCell>
+                <TableCell>{data.powersets}</TableCell>
+                <TableCell>{data.deaths}</TableCell>
+                <TableCell>{data.targets}</TableCell>
+                <TableCell>{(data.survival * 100).toFixed(2) + '%'}</TableCell>
+                <TableCell>{data.otp > 0.01 ? (data.otp * 100).toFixed(2) + '%' : null}</TableCell>
+                <TableCell>{data.ohp ? (data.ohp * 100).toFixed(2) + '%' : null}</TableCell>
+                <TableCell>{data.atks}</TableCell>
+                <TableCell>{data.kPart > 0.01 ? (data.kPart * 100).toFixed(2) + '%' : null}</TableCell>
+                <TableCell>{data.atksOnDeath}</TableCell>
+                <TableCell>{data.atksBeforePS}</TableCell>
+                <TableCell>{data.atksAfterDeath}</TableCell>
+                <TableCell>{data.atksIntoPS}</TableCell>
+              </TableRow>
+            )
 
-        })
-          :
-          null}
-      </tbody>
-    </Table>
+          })
+            :
+            null}
+        </TableBody>
+      </Table>
+    </TableContainer>
   )
 }

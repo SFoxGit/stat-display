@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react'
 import { parse } from 'papaparse';
-import { Col, Container, Row, Button } from 'react-bootstrap';
 import MatchSelector from '../MatchSelector/match.selector';
 import PlayerOverview from '../PlayerOverview/player.overview';
 import Summary from '../Summary/summary';
 import SupportMain from '../SupportMain/support.main';
 import ScoreChart from '../ScoreChart/score.chart';
+import Container from '@material-ui/core/Container';
+import Grid from '@material-ui/core/Grid';
+
 
 const registry = [
   { "file": "/Data/1.cohdemo.csv" },
@@ -384,23 +386,24 @@ export default function Matches() {
     }
   }, [matches])
   return (
-    <Container fluid>
-      <MatchSelector matches={matches} setMatchIndex={setMatchIndex} matchData={matchData} summaryStats={summaryStats} selectMatch={selectMatch} />
-      <Row>{matchIndex}</Row>
-      <Row>
-        <Col xs={12} md={8}>
-          <PlayerOverview summaryStats={summaryStats} matchIndex={matchIndex} />
-        </Col>
-        <Col xs={12} md={4}>
-          <Summary summary={summary} />
-          <SupportMain summaryStats={summaryStats} />
-        </Col>
-      </Row>
-      <Row>
-        <Col>
-          <ScoreChart scoreLog={scoreLog} />
-        </Col>
-      </Row>
-    </Container>
+
+    <Grid container >
+      <Grid item xs={12}>
+        <MatchSelector matches={matches} setMatchIndex={setMatchIndex} matchData={matchData} summaryStats={summaryStats} selectMatch={selectMatch} />
+      </Grid>
+      <Grid item xs={12} sm={8}>
+        <PlayerOverview summaryStats={summaryStats} matchIndex={matchIndex} />
+      </Grid>
+      <Grid item xs={12} sm={4}>
+        <Summary summary={summary} />
+        <SupportMain summaryStats={summaryStats} />
+      </Grid>
+
+
+      <Grid item>
+        <ScoreChart scoreLog={scoreLog} />
+      </Grid>
+    </Grid>
+
   )
 }

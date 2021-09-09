@@ -1,23 +1,43 @@
-import React from "react";
-import { Navbar, Nav, Container } from 'react-bootstrap'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import { makeStyles } from '@material-ui/core/styles';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import Typography from '@material-ui/core/Typography';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import Link from '@material-ui/core/Link';
+import { useHistory } from 'react-router';
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  menuButton: {
+    marginRight: theme.spacing(2),
+  },
+  title: {
+    flexGrow: 1,
+  },
+}));
 
-function Header() {
+export default function Header() {
+  const history = useHistory()
+  const classes = useStyles();
+
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container>
-        <Navbar.Brand as={Link} to="/">Stat Display</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="ml-auto">
-            {/* <Nav.Link as={Link} to="/results">Results</Nav.Link> */}
-            {/* <Nav.Link as={Link} to="/add">Add</Nav.Link> */}
-            <Nav.Link as={Link} to="/stats">Stats</Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
-  )
+    <div className={classes.root}>
+      <AppBar position="static">
+        <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu">
+            <MenuIcon />
+          </IconButton>
+          <Typography variant="h6" className={classes.title}>
+          
+          <Link href="/stats" onClick={() => {history.push("/stats")}} color="inherit">
+            Stats
+          </Link>
+          </Typography>
+        </Toolbar>
+      </AppBar>
+    </div>
+  );
 }
-
-export default Header;
