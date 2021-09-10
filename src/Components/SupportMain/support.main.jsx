@@ -30,52 +30,48 @@ const StyledTableRow = withStyles((theme) => ({
 
 export default function SupportMain(props) {
   const summaryStats = props.summaryStats
-  const blueTeam = {
-    color: 'cyan',
-    textAlign: 'center',
-    textShadow: "3px 3px 0 black",
-    fontWeight: "bolder",
-    fontSize: "18px"
-  };
 
-  const redTeam = {
-    color: 'indianred',
-    textAlign: 'center',
-    textShadow: "3px 3px 0 black",
-    fontWeight: "bolder",
-    fontSize: "18px"
-  };
   return (
     <TableContainer>
       <Table  variant="dark" style={{ boxShadow: "7px 7px 5px black" }}>
         <TableHead>
           <StyledTableRow style={{ textAlign: 'center' }}>
-            <StyledTableCell>player</StyledTableCell>
-            <StyledTableCell>Heal Before Phase</StyledTableCell>
-            <StyledTableCell>HO b4 Kill</StyledTableCell>
-            <StyledTableCell>AP b4 Kill</StyledTableCell>
-            <StyledTableCell>Heal After Death</StyledTableCell>
-            <StyledTableCell>Heal After Phase</StyledTableCell>
-            <StyledTableCell>CMs</StyledTableCell>
+            <StyledTableCell align="center">player</StyledTableCell>
+            <StyledTableCell align="center">Heal Before Phase</StyledTableCell>
+            <StyledTableCell align="center">HO b4 Kill</StyledTableCell>
+            <StyledTableCell align="center">AP b4 Kill</StyledTableCell>
+            <StyledTableCell align="center">Heal After Death</StyledTableCell>
+            <StyledTableCell align="center">Heal After Phase</StyledTableCell>
+            <StyledTableCell align="center">CMs</StyledTableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
           {summaryStats.length ? summaryStats.map(data => {
 
-            let teamStyle;
-            if (data.team === "BLU") { teamStyle = blueTeam }
-            if (data.team === "RED") { teamStyle = redTeam }
+            
             if (data.ohp) {
               return (
-                <StyledTableRow style={teamStyle} key={data.player}>
-                  <StyledTableCell>{data.player}</StyledTableCell>
-                  <StyledTableCell>{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
-                  <StyledTableCell>{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
-                  <StyledTableCell>{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
-                  <StyledTableCell>{data.ohp ? data.healsAfterDeath : null}</StyledTableCell>
-                  <StyledTableCell>{data.ohp ? data.healsAfterPS : null}</StyledTableCell>
-                  <StyledTableCell>{data.ohp ? data.cms : null}</StyledTableCell>
-                </StyledTableRow>
+                data.team === "RED" ? 
+                <StyledTableRow key={data.player}>
+                  <StyledTableCell  style={{color: "red"}}  align="center">{data.player}</StyledTableCell> 
+                  <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.healsAfterDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.healsAfterPS : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.cms : null}</StyledTableCell>
+                </StyledTableRow> 
+                :
+                <StyledTableRow key={data.player}>
+                  <StyledTableCell  style={{color: "blue"}}  align="center">{data.player}</StyledTableCell> 
+                  <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.healsAfterDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.healsAfterPS : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.cms : null}</StyledTableCell>
+                </StyledTableRow> 
+
               )
             } else return null
           }) : null}
