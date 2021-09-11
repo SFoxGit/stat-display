@@ -14,7 +14,7 @@ const StyledTableCell = withStyles((theme) => ({
   },
   body: {
     fontSize: 14,
-    backgroundColor: theme.palette.success.dark,
+    backgroundColor: 'mustard',
     color: theme.palette.common.white,
 
   },
@@ -53,7 +53,7 @@ export default function SupportMain(props) {
               return (
                 data.team === "RED" ? 
                 <StyledTableRow key={data.player}>
-                  <StyledTableCell  style={{color: "red"}}  align="center">{data.player}</StyledTableCell> 
+                  <StyledTableCell style={{color: "red"}} align="center">{data.player}</StyledTableCell> 
                   <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
                   <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
                   <StyledTableCell style={{color: "red"}} align="center">{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
@@ -63,7 +63,7 @@ export default function SupportMain(props) {
                 </StyledTableRow> 
                 :
                 <StyledTableRow key={data.player}>
-                  <StyledTableCell  style={{color: "blue"}}  align="center">{data.player}</StyledTableCell> 
+                  <StyledTableCell style={{color: "blue"}} align="center">{data.player}</StyledTableCell> 
                   <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
                   <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
                   <StyledTableCell style={{color: "blue"}} align="center">{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>

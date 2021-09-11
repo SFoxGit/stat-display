@@ -10,14 +10,13 @@ export default function Summary(props) {
   const summary = props.summary
 
   const title = {
-    textShadow: "4px 4px 0 black",
     fontWeight: "bolder",
     fontSize: "24px",
   }
 
   return (
     <TableContainer>
-      <Table  variant="dark" className="sortable" style={{ boxShadow: "7px 7px 5px black" }}>
+      <Table  variant="dark" className="sortable" style={{ boxShadow: "2px 2px 2px black" , background: "grey"}}>
         <TableHead>
           <TableRow style={{ textAlign: 'center', fontWeight: "bolder", fontSize: "24px", textShadow: "3px 3px 0 black", }}>
             <TableCell></TableCell>

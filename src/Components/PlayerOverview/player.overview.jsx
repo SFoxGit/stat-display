@@ -26,7 +26,7 @@ export default function PlayerOverview(props) {
 
   return (
     <TableContainer>
-      <Table variant="dark" className="rounded" key={matchIndex} style={{ boxShadow: "7px 7px 5px black", fontWeight: "bolder", fontSize: "18px", textShadow: "3px 3px 0 black", }}>
+      <Table variant="dark" className="rounded" key={matchIndex} style={{ boxShadow: "7px 7px 5px black", fontWeight: "bolder", fontSize: "18px",  background: "grey"}}>
         <TableHead>
           <TableRow style={{ textAlign: 'center' }}>
             <TableCell>player</TableCell>
