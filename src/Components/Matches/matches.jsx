@@ -5,7 +5,6 @@ import PlayerOverview from '../PlayerOverview/player.overview';
 import Summary from '../Summary/summary';
 import SupportMain from '../SupportMain/support.main';
 import ScoreChart from '../ScoreChart/score.chart';
-import Container from '@material-ui/core/Container';
 import Grid from '@material-ui/core/Grid';
 
 
