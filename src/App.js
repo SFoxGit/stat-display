@@ -5,7 +5,7 @@ import Matches from './Components/Matches/matches';
 
 function App() {
   return (
-    <Router>
+    <Router >
       <Header />
       <Switch>
         <Route exact path="/">

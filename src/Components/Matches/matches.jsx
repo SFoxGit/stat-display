@@ -6,6 +6,7 @@ import Summary from '../Summary/summary';
 import SupportMain from '../SupportMain/support.main';
 import ScoreChart from '../ScoreChart/score.chart';
 import Grid from '@material-ui/core/Grid';
+import { makeStyles } from '@material-ui/core/styles';
 
 
 const registry = [
@@ -17,6 +18,16 @@ const registry = [
   { "file": "/Data/6.cohdemo.csv" },
   { "file": "/Data/7.cohdemo.csv" },
 ]
+const useStyles = makeStyles((theme) => ({
+  root: {
+    flexGrow: 1,
+  },
+  paper: {
+    padding: theme.spacing(2),
+    textAlign: 'center',
+  },
+}));
+
 
 export default function Matches() {
   const [matches, setMatches] = useState([])
@@ -25,6 +36,7 @@ export default function Matches() {
   const [summaryStats, setSummaryStats] = useState([]);
   const [summary, setSummary] = useState([]);
   const [scoreLog, setScoreLog] = useState([])
+  const classes = useStyles();
 
   const selectMatch = (index) => {
     // const matchIndex = matches.findIndex((obj => obj.match === index))
@@ -386,7 +398,7 @@ export default function Matches() {
   }, [matches])
   return (
 
-    <Grid container >
+    <Grid container spacing={3} style={{padding: "10px", background: "linear-gradient(132deg, rgba(0,128,128,1) 13%, rgba(0,139,139,1) 48%, rgba(0,255,255,1) 83%)", minHeight: "100vh"}}>
       <Grid item xs={12}>
         <MatchSelector matches={matches} setMatchIndex={setMatchIndex} matchData={matchData} summaryStats={summaryStats} selectMatch={selectMatch} />
       </Grid>
@@ -396,11 +408,11 @@ export default function Matches() {
       <Grid item xs={12} sm={4}>
         <Summary summary={summary} />
         <SupportMain summaryStats={summaryStats} />
+        <ScoreChart scoreLog={scoreLog} />
       </Grid>
 
 
       <Grid item>
-        <ScoreChart scoreLog={scoreLog} />
       </Grid>
     </Grid>
 
