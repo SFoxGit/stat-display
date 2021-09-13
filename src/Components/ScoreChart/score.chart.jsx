@@ -14,9 +14,10 @@ export default function ScoreChart(props) {
 
   return (
     <LineChart
-      width={500}
-      height={300}
+      width={800}
+      height={500}
       data={scoreLog}
+      style={{background: "black"}}
       margin={{
         top: 5,
         right: 30,

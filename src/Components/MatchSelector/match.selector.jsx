@@ -18,7 +18,7 @@ export default function MatchSelector(props) {
   return (
     <Grid container className={classes.root} justifyContent="center">
       {matches.length ?
-        matches.map((name, index) => <Button style={{marginLeft: "10px", marginRight: "10px"}} key={name.match + index} variant="outlined" color="primary" size="medium" onClick={() => {setMatchIndex(index); selectMatch(index)}}>{name.match}</Button>)
+        matches.map((name, index) => <Button style={{marginLeft: "10px", marginRight: "10px", background: "white", fontWeight: "bolder"}} key={name.match + index} variant="outlined" color="primary" size="medium" onClick={() => {setMatchIndex(index); selectMatch(index)}}>{name.match}</Button>)
         :
         null}
     </Grid>
