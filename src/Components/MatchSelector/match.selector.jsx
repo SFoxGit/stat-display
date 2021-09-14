@@ -1,13 +1,7 @@
 import React from 'react'
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button'
-import { makeStyles } from '@material-ui/core/styles';
-const useStyles = makeStyles((theme) => ({
-  root: {
-    flexGrow: 1,
-    margin: 16,
-  }
-}));
+
 export default function MatchSelector(props) {
   const matches = props.matches
   const setMatchIndex = props.setMatchIndex
