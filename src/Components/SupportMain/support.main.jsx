@@ -9,7 +9,7 @@ import { withStyles } from '@material-ui/core/styles';
 
 const StyledTableCell = withStyles((theme) => ({
   head: {
-    backgroundColor: theme.palette.common.black,
+    // backgroundColor: theme.palette.common.black,
     color: theme.palette.common.white,
   },
   body: {
@@ -33,9 +33,9 @@ export default function SupportMain(props) {
 
   return (
     <TableContainer>
-      <Table  variant="dark" style={{ boxShadow: "7px 7px 5px black" }}>
+      <Table  variant="dark" style={{ boxShadow: "7px 7px 5px black", marginTop: "20px" }}>
         <TableHead>
-          <StyledTableRow style={{ textAlign: 'center' }}>
+          <StyledTableRow style={{ textAlign: 'center', background: "linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(31,31,31,1) 60%, rgba(70,70,70,1) 91%)"  }}>
             <StyledTableCell align="center">player</StyledTableCell>
             <StyledTableCell align="center">Heal Before Phase</StyledTableCell>
             <StyledTableCell align="center">HO b4 Kill</StyledTableCell>

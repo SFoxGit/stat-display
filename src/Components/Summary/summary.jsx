@@ -18,7 +18,7 @@ export default function Summary(props) {
     <TableContainer>
       <Table  variant="dark" className="sortable" style={{ boxShadow: "2px 2px 2px black" , background: "linear-gradient(329deg, rgba(57,57,57,1) 37%, rgba(96,96,96,1) 68%, rgba(115,115,115,1) 91%)"}}>
         <TableHead>
-          <TableRow >
+          <TableRow style={{background: "linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(31,31,31,1) 60%, rgba(70,70,70,1) 91%)" }}>
             <TableCell></TableCell>
             <TableCell style={{ textAlign: 'center', fontWeight: "bolder", fontSize: "24px", textShadow: "3px 3px 0 black", color: "white" }}>Blue</TableCell>
             <TableCell style={{ textAlign: 'center', fontWeight: "bolder", fontSize: "24px", textShadow: "3px 3px 0 black", color: "white" }}>Red</TableCell>
