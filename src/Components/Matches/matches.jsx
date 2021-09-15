@@ -349,7 +349,7 @@ export default function Matches() {
         const cmCount = () => {
           support_extras.forEach(y => {
             const playerIndex = summary_stats.findIndex((obj => obj.player === y.player))
-            const cmIndex = y.actions.findIndex((obj => obj.name === "clear mind"))
+            const cmIndex = y.actions.findIndex((obj => obj.name === "clear mind" || obj.name === "energizing circuit" || obj.name === "empowering circuit"))
             summary_stats[playerIndex].cms = y.actions[cmIndex].count
           })
           summary_stats.sort((a, b) => {
