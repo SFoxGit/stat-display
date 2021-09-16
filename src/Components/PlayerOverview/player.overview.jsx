@@ -28,20 +28,20 @@ export default function PlayerOverview(props) {
       <Table key={matchIndex} style={{ boxShadow: "7px 7px 5px black", fontWeight: "bolder", fontSize: "18px", background: "grey" }}>
         <TableHead>
           <TableRow style={{ textAlign: 'center', background: "linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(31,31,31,1) 60%, rgba(70,70,70,1) 91%)" }}>
-            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>player</TableCell>
+            <TableCell width="20%" style={{color: "white", fontSize: "18px", textAlign: "center"}}>player</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>team</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>powerset</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>D</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>T</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>survival</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>otp</TableCell>
-            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>heal</TableCell>
+            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>ohp</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>atks</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>KP</TableCell>
-            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>Atks on Kill</TableCell>
-            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>Atks b4 PS</TableCell>
-            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>Atk after Kill</TableCell>
-            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>Atks in2 PS</TableCell>
+            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>AoK</TableCell>
+            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>Ab4PS</TableCell>
+            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>AaK</TableCell>
+            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>Ain2PS</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -51,20 +51,20 @@ export default function PlayerOverview(props) {
             if (data.team === "RED") { teamStyle = redTeam }
             return (
               <TableRow style={teamStyle} key={data.player}>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.player}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.team}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.powersets}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.deaths}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.targets}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{(data.survival * 100).toFixed(2) + '%'}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.otp > 0.01 ? (data.otp * 100).toFixed(2) + '%' : null}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.ohp ? (data.ohp * 100).toFixed(2) + '%' : null}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.atks}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.kPart > 0.01 ? (data.kPart * 100).toFixed(2) + '%' : null}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.atksOnDeath}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.atksBeforePS}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.atksAfterDeath}</TableCell>
-                <TableCell style={{color: "white", fontWeight: "bolder", textAlign: "center", fontSize: "18px"}}>{data.atksIntoPS}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.player}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.team}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.powersets}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.deaths}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.targets}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{(data.survival * 100).toFixed(2) + '%'}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.otp > 0.01 ? (data.otp * 100).toFixed(2) + '%' : null}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.ohp ? (data.ohp * 100).toFixed(2) + '%' : null}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.atks}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.kPart > 0.01 ? (data.kPart * 100).toFixed(2) + '%' : null}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.atksOnDeath}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.atksBeforePS}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.atksAfterDeath}</TableCell>
+                <TableCell style={{color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px"}}>{data.atksIntoPS}</TableCell>
               </TableRow>
             )
 

@@ -32,8 +32,8 @@ export default function SupportMain(props) {
   const summaryStats = props.summaryStats
 
   return (
-    <TableContainer>
-      <Table  variant="dark" style={{ boxShadow: "7px 7px 5px black", marginTop: "20px" }}>
+    <TableContainer style={{ boxShadow: "7px 7px 7px black", marginTop: "20px", marginBottom: "20px"  }}>
+      <Table>
         <TableHead>
           <StyledTableRow style={{ textAlign: 'center', background: "linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(31,31,31,1) 60%, rgba(70,70,70,1) 91%)"  }}>
             <StyledTableCell align="center">player</StyledTableCell>
