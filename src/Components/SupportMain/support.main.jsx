@@ -36,13 +36,13 @@ export default function SupportMain(props) {
       <Table>
         <TableHead>
           <StyledTableRow style={{ textAlign: 'center', background: "linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(31,31,31,1) 60%, rgba(70,70,70,1) 91%)"  }}>
-            <StyledTableCell align="center">player</StyledTableCell>
-            <StyledTableCell align="center">Heal Before Phase</StyledTableCell>
-            <StyledTableCell align="center">HO b4 Kill</StyledTableCell>
-            <StyledTableCell align="center">AP b4 Kill</StyledTableCell>
-            <StyledTableCell align="center">Heal After Death</StyledTableCell>
-            <StyledTableCell align="center">Heal After Phase</StyledTableCell>
-            <StyledTableCell align="center">CMs</StyledTableCell>
+            <StyledTableCell style={{fontWeight: "bold"}} align="center">player</StyledTableCell>
+            <StyledTableCell style={{fontWeight: "bold"}} align="center">Heal Before Phase</StyledTableCell>
+            <StyledTableCell style={{fontWeight: "bold"}} align="center">HO b4 Kill</StyledTableCell>
+            <StyledTableCell style={{fontWeight: "bold"}} align="center">AP b4 Kill</StyledTableCell>
+            <StyledTableCell style={{fontWeight: "bold"}} align="center">Heal After Death</StyledTableCell>
+            <StyledTableCell style={{fontWeight: "bold"}} align="center">Heal After Phase</StyledTableCell>
+            <StyledTableCell style={{fontWeight: "bold"}} align="center">CMs</StyledTableCell>
           </StyledTableRow>
         </TableHead>
         <TableBody>
@@ -53,23 +53,23 @@ export default function SupportMain(props) {
               return (
                 data.team === "RED" ? 
                 <StyledTableRow key={data.player}>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.player}</StyledTableCell> 
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.healsAfterDeath : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.healsAfterPS : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.cms : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.player}</StyledTableCell> 
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.healsAfterDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.healsAfterPS : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"}} align="center">{data.ohp ? data.cms : null}</StyledTableCell>
                 </StyledTableRow> 
                 :
                 <StyledTableRow key={data.player}>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.player}</StyledTableCell> 
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.healsAfterDeath : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.healsAfterPS : null}</StyledTableCell>
-                  <StyledTableCell style={{color: "white",  fontSize: "18px", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.cms : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.player}</StyledTableCell> 
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.healsBeforePS : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.hoBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.apBeforeDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.healsAfterDeath : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.healsAfterPS : null}</StyledTableCell>
+                  <StyledTableCell style={{color: "white",  fontSize: "12px", fontWeight: "bold", background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"}} align="center">{data.ohp ? data.cms : null}</StyledTableCell>
                 </StyledTableRow> 
 
               )
