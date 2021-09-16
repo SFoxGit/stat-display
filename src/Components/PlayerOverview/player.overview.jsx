@@ -24,15 +24,15 @@ export default function PlayerOverview(props) {
   };
 
   return (
-    <TableContainer>
+    <TableContainer style={{ boxShadow: "7px 7px 7px black" }}>
       <Table key={matchIndex} style={{ boxShadow: "7px 7px 5px black", fontWeight: "bolder", fontSize: "18px", background: "grey" }}>
         <TableHead>
           <TableRow style={{ textAlign: 'center', background: "linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(31,31,31,1) 60%, rgba(70,70,70,1) 91%)" }}>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>player</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>team</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>powerset</TableCell>
-            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>deaths</TableCell>
-            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>targets</TableCell>
+            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>D</TableCell>
+            <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>T</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>survival</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>otp</TableCell>
             <TableCell style={{color: "white", fontSize: "18px", textAlign: "center"}}>heal</TableCell>
