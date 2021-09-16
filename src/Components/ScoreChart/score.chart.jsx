@@ -14,10 +14,10 @@ export default function ScoreChart(props) {
 
   return (
     <LineChart
-      width={800}
+      width={600}
       height={500}
       data={scoreLog}
-      style={{background: "black"}}
+      style={{background: "linear-gradient(45deg, rgba(0,0,0,1) 22%, rgba(57,57,57,1) 75%, rgba(138,138,138,1) 100%)"}}
       margin={{
         top: 5,
         right: 30,
@@ -36,7 +36,7 @@ export default function ScoreChart(props) {
         stroke="#8884d8"
         activeDot={{ r: 8 }}
       />
-      <Line type="monotone" dataKey="red" stroke="#82ca9d" />
+      <Line type="monotone" dataKey="red" stroke="#82ca9d" activeDot={{ r: 8 }} />
     </LineChart>
   );
 }

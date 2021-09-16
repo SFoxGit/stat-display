@@ -15,8 +15,8 @@ export default function Summary(props) {
   }
 
   return (
-    <TableContainer>
-      <Table  variant="dark" className="sortable" style={{ boxShadow: "2px 2px 2px black" , background: "linear-gradient(329deg, rgba(57,57,57,1) 37%, rgba(96,96,96,1) 68%, rgba(115,115,115,1) 91%)"}}>
+    <TableContainer style={{ boxShadow: "7px 7px 7px black" }}>
+      <Table  variant="dark" className="sortable" >
         <TableHead>
           <TableRow style={{background: "linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(31,31,31,1) 60%, rgba(70,70,70,1) 91%)" }}>
             <TableCell></TableCell>
@@ -39,7 +39,7 @@ export default function Summary(props) {
               redStyle = { color: 'indianred', fontWeight: "bolder", fontSize: "24px", textShadow: "3px 3px 0 black", textAlign: "center"}
             }
             return (
-              <TableRow key={data.title} style={{ textAlign: 'center' }}>
+              <TableRow key={data.title} style={{ textAlign: 'center', background: "linear-gradient(0deg, rgba(6,89,94,1) 34%, rgba(48,154,163,1) 75%, rgba(134,226,226,1) 100%)" }}>
                 <TableCell style={{ textAlign: 'center', fontWeight: "bolder", fontSize: "24px", textShadow: "3px 3px 0 black", color: "white" }}>{data.title}</TableCell>
                 <TableCell><div style={blueStyle}>{data.blue}</div></TableCell>
                 <TableCell><div style={redStyle}>{data.red}</div></TableCell>
