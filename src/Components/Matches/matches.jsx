@@ -7,6 +7,8 @@ import SupportMain from '../SupportMain/support.main';
 import ScoreChart from '../ScoreChart/score.chart';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
+import DisplaySelection from '../Display/display-selection';
+import { Box } from '@material-ui/core';
 
 
 const registry = [
@@ -36,6 +38,7 @@ export default function Matches() {
   const [summaryStats, setSummaryStats] = useState([]);
   const [summary, setSummary] = useState([]);
   const [scoreLog, setScoreLog] = useState([])
+  const [disp, setDisp] = useState(0)
   const classes = useStyles();
 
   const selectMatch = (index) => {
@@ -398,22 +401,34 @@ export default function Matches() {
   }, [matches])
   return (
 
-    <Grid container spacing={3} style={{padding: "10px", background: "linear-gradient(132deg, rgba(0,128,128,1) 13%, rgba(0,139,139,1) 48%, rgba(0,255,255,1) 83%)", minHeight: "100vh"}}>
+    <Grid container style={{ padding: "10px", alignContent: "flex-start", background: "linear-gradient(132deg, rgba(0,128,128,1) 13%, rgba(0,139,139,1) 48%, rgba(0,255,255,1) 83%)", minHeight: "100vh", width: "100%" }}>
       <Grid item xs={12}>
         <MatchSelector matches={matches} setMatchIndex={setMatchIndex} matchData={matchData} summaryStats={summaryStats} selectMatch={selectMatch} />
       </Grid>
-      <Grid item xs={12} sm={8}>
-        <PlayerOverview summaryStats={summaryStats} matchIndex={matchIndex} />
+      <Grid item xs={12}>
+        <DisplaySelection disp={disp} setDisp={setDisp} />
       </Grid>
-      <Grid item xs={12} sm={4}>
-        <Summary summary={summary} />
-        <SupportMain summaryStats={summaryStats} />
-        <ScoreChart scoreLog={scoreLog} />
-      </Grid>
+      {disp === 0 ?
+        <>
+          <Grid item xs={12} sm={8}>
+            <Box p={5}>
+              <PlayerOverview summaryStats={summaryStats} matchIndex={matchIndex} />
+            </Box>
+          </Grid>
+          <Grid item xs={12} sm={4}>
+            <Box p={5}>
+              <Summary summary={summary} />
+              <SupportMain summaryStats={summaryStats} />
+              <Box style={{ boxShadow: "7px 7px 7px black", background: "linear-gradient(45deg, rgba(0,0,0,1) 22%, rgba(57,57,57,1) 75%, rgba(138,138,138,1) 100%)", padding: "5px"}}>
+                <h3 style={{width: "100%", textAlign: "center", color: "white", margin: "5px", padding: "5px"}}>Score</h3>
+                <ScoreChart scoreLog={scoreLog} />
+              </Box>
+            </Box>
+          </Grid>
+        </>
+        : null}
 
 
-      <Grid item>
-      </Grid>
     </Grid>
 
   )

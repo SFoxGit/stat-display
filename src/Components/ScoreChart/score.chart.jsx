@@ -6,7 +6,8 @@ import {
   YAxis,
   CartesianGrid,
   Tooltip,
-  Legend
+  Legend,
+  ResponsiveContainer
 } from "recharts";
 import Container from '@material-ui/core/Container';
 
@@ -14,12 +15,10 @@ export default function ScoreChart(props) {
   const scoreLog = props.scoreLog
 
   return (
-    <Container maxWidth="sm" style={{padding: "0px"}}>
+    <ResponsiveContainer  width="100%" height={400} style={{padding: "0px"}}>
       <LineChart
-        width={600}
-        height={500}
         data={scoreLog}
-        style={{ boxShadow: "7px 7px 7px black", background: "linear-gradient(45deg, rgba(0,0,0,1) 22%, rgba(57,57,57,1) 75%, rgba(138,138,138,1) 100%)" }}
+        
         margin={{
           top: 5,
           right: 5,
@@ -41,6 +40,6 @@ export default function ScoreChart(props) {
         />
         <Line type="monotone" dataKey="red" stroke="#f50713" activeDot={{ r: 8 }} strokeWidth={2} />
       </LineChart>
-    </Container>
+    </ResponsiveContainer >
   );
 }

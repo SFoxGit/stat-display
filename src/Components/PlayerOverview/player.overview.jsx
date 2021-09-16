@@ -14,13 +14,13 @@ export default function PlayerOverview(props) {
 
   const blueTeam = {
     // background: "rgb(2,0,36)",
-    color: "white",
-    background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)"
+    background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)",
+    textShadow: "2px 2px black"
     };
 
   const redTeam = {
-    color: 'indianred',
-    background: "linear-gradient(0deg, rgba(84,8,16,1) 31%, rgba(143,1,12,1) 71%, rgba(227,15,37,1) 85%)"
+    background: "linear-gradient(0deg, rgba(111,0,0,1) 48%, rgba(167,0,0,1) 81%, rgba(250,0,0,1) 100%)",
+    textShadow: "2px 2px black"
   };
 
   return (

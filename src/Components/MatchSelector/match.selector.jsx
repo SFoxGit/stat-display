@@ -6,7 +6,8 @@ import { makeStyles } from '@material-ui/core/styles';
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    margin: 16,
+    marginTop: "10px",
+    marginBottom: "10px"
   }
 }));
 export default function MatchSelector(props) {
