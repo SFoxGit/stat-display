@@ -1,58 +1,14 @@
 import React, { useEffect, useState } from "react";
 import {
-  BarChart,
-  Bar,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend
+    BarChart,
+    Bar,
+    XAxis,
+    YAxis,
+    CartesianGrid,
+    Tooltip,
+    Legend
 } from "recharts";
-
-const data = [
-  {
-    name: "Page A",
-    uv: 4000,
-    pv: 2400,
-    amt: 2400
-  },
-  {
-    name: "Page B",
-    uv: 3000,
-    pv: 1398,
-    amt: 2210
-  },
-  {
-    name: "Page C",
-    uv: 2000,
-    pv: 9800,
-    amt: 2290
-  },
-  {
-    name: "Page D",
-    uv: 2780,
-    pv: 3908,
-    amt: 2000
-  },
-  {
-    name: "Page E",
-    uv: 1890,
-    pv: 4800,
-    amt: 2181
-  },
-  {
-    name: "Page F",
-    uv: 2390,
-    pv: 3800,
-    amt: 2500
-  },
-  {
-    name: "Page G",
-    uv: 3490,
-    pv: 4300,
-    amt: 2100
-  }
-];
+import "./style.css"
 
 export default function OffenseBar(props) {
     const summaryStats = props.summaryStats
@@ -63,43 +19,63 @@ export default function OffenseBar(props) {
             if (person.offTiming) {
 
                 newArr.push({
-                        name: person.player, 
-                        early: person.offTiming.early,
-                        0.33: person.offTiming.one,
-                        0.67: person.offTiming.two,
-                        1: person.offTiming.three,
-                        1.5: person.offTiming.four,
-                        2: person.offTiming.five,
-                        over: person.offTiming.six,
-                    })
-                }
+                    name: person.player,
+                    early: person.offTiming.early,
+                    0.33: person.offTiming.one,
+                    0.67: person.offTiming.two,
+                    1: person.offTiming.three,
+                    1.5: person.offTiming.four,
+                    2: person.offTiming.five,
+                    over: person.offTiming.six,
+                })
+            }
         })
         setData([...newArr])
     }, [summaryStats])
-  return (
-    <BarChart
-      width={800}
-      height={500}
-      data={data}
-      margin={{
-        top: 20,
-        right: 30,
-        left: 20,
-        bottom: 5
-      }}
-    >
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="name" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      <Bar dataKey="early" stackId="a" fill="#ffef63" />
-      <Bar dataKey="0.33" stackId="a" fill="#63e2f0" />
-      <Bar dataKey="0.67" stackId="a" fill="#15c9dd" />
-      <Bar dataKey="1" stackId="a" fill="#0f8d9a" />
-      <Bar dataKey="1.5" stackId="a" fill="#0b646e" />
-      <Bar dataKey="2" stackId="a" fill="#063c42" />
-      <Bar dataKey="over" stackId="a" fill="#000000" />
-    </BarChart>
-  );
+    function CustomTooltip({ payload, label, active }) {
+        if (active) {
+            console.log(payload)
+            return (
+                <div className="custom-tooltip" style={{backgroundColor: "white", padding: "20px", border: "2px solid black", borderRadius: "10px"}}>
+                    <p className="label">{`${label}`}</p>
+                    <p className="intro">{`Early  : ${payload[0].value}`}</p>
+                    <p className="intro">{`< 0.33 : ${payload[1].value}`}</p>
+                    <p className="intro">{`< 0.67 : ${payload[2].value}`}</p>
+                    <p className="intro">{`< 1.0  : ${payload[3].value}`}</p>
+                    <p className="intro">{`< 1.5  : ${payload[4].value}`}</p>
+                    <p className="intro">{`< 2.0  : ${payload[5].value}`}</p>
+                    <p className="intro">{`> 2.0  : ${payload[6].value}`}</p>
+                    <p className="intro">{`Total  : ${parseFloat(payload[0].value) + parseFloat(payload[1].value) + parseFloat(payload[2].value) + parseFloat(payload[3].value) + parseFloat(payload[4].value) + parseFloat(payload[5].value) + parseFloat(payload[6].value)}`}</p>
+                    <p className="desc"></p>
+                </div>
+            );
+        }
+        return null;
+    }
+    return (
+        <BarChart
+            width={1000}
+            height={500}
+            data={data}
+            margin={{
+                top: 20,
+                right: 60,
+                left: 60,
+                bottom: 100
+            }}
+        >
+            <CartesianGrid strokeDasharray="3 3" />
+            <XAxis dataKey="name" angle={-45} textAnchor="end" stroke="#000000" interval={0} />
+            <YAxis type="number" domain={['dataMin', 'dataMax']} stroke="#ffffff" />
+            <Tooltip content={<CustomTooltip />} />
+            <Legend wrapperStyle={{ bottom: 0 }} />
+            <Bar dataKey="early" stackId="a" fill="#ffef63" />
+            <Bar dataKey="0.33" stackId="a" fill="#63e2f0" />
+            <Bar dataKey="0.67" stackId="a" fill="#15c9dd" />
+            <Bar dataKey="1" stackId="a" fill="#0f8d9a" />
+            <Bar dataKey="1.5" stackId="a" fill="#0b646e" />
+            <Bar dataKey="2" stackId="a" fill="#063c42" />
+            <Bar dataKey="over" stackId="a" fill="#000000" />
+        </BarChart>
+    );
 }
