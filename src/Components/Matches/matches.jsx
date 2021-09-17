@@ -9,6 +9,7 @@ import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import DisplaySelection from '../Display/display-selection';
 import { Box } from '@material-ui/core';
+import Offense from '../Offense/offense';
 
 
 const registry = [
@@ -419,15 +420,18 @@ export default function Matches() {
             <Box p={5}>
               <Summary summary={summary} />
               <SupportMain summaryStats={summaryStats} />
-              <Box style={{ boxShadow: "7px 7px 7px black", background: "linear-gradient(45deg, rgba(0,0,0,1) 22%, rgba(57,57,57,1) 75%, rgba(138,138,138,1) 100%)", padding: "5px"}}>
-                <h3 style={{width: "100%", textAlign: "center", color: "white", margin: "5px", padding: "5px"}}>Score</h3>
+              <Box style={{ boxShadow: "7px 7px 7px black", background: "linear-gradient(45deg, rgba(0,0,0,1) 22%, rgba(57,57,57,1) 75%, rgba(138,138,138,1) 100%)", padding: "5px" }}>
+                <h3 style={{ width: "100%", textAlign: "center", color: "white", margin: "5px", padding: "5px" }}>Score</h3>
                 <ScoreChart scoreLog={scoreLog} />
               </Box>
             </Box>
           </Grid>
         </>
         : null}
-
+      {disp === 25 ?
+        <Offense summaryStats={summaryStats}/>
+        :
+        null}
 
     </Grid>
 
