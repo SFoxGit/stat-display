@@ -429,7 +429,7 @@ export default function Matches() {
         </>
         : null}
       {disp === 25 ?
-        <Offense summaryStats={summaryStats}/>
+        <Offense summaryStats={summaryStats} matchData={matchData}/>
         :
         null}
 
