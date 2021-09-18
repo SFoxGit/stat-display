@@ -34,7 +34,6 @@ export default function OffenseBar(props) {
     }, [summaryStats])
     function CustomTooltip({ payload, label, active }) {
         if (active) {
-            console.log(payload)
             return (
                 <div className="custom-tooltip" style={{backgroundColor: "white", padding: "20px", border: "2px solid black", borderRadius: "10px"}}>
                     <p className="label">{`${label}`}</p>

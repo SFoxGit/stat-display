@@ -63,7 +63,6 @@ export default function Matches() {
     setSummaryStats(matches[index].data.summary_stats)
     setSummary(matches[index].data.summary)
     setScoreLog(sortScoreLog)
-    console.log(sortScoreLog)
   }
   useEffect(() => {
     if (!matches.length) {
@@ -93,7 +92,6 @@ export default function Matches() {
         const support_powers = []
         const support_stats = [];
         let map = rows[1][1]
-        console.log(rows.length)
 
         const asyncIterable = {
           [Symbol.asyncIterator]() {
