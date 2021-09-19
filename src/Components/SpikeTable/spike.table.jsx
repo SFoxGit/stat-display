@@ -19,9 +19,20 @@ const columns = [
 ]
 
 export default function SpikeTable(props) {
-  const { matchData } = props
+  const { matchData, setHpData, setAtkData } = props
   const [tableDisplay, setTableDisplay] = useState([])
-
+  const handleSelectSpike = (row) => {
+    const spikeIndex = matchData.data.spike_hp.findIndex(element => element.id === row.id)
+    const spikeLogIndex = matchData.data.spike_log.findIndex(element => element.id === row.id)
+    const newAtkLog = matchData.data.spike_log[spikeLogIndex].atkLog
+    for (let i = newAtkLog.length-1; i >= 0; i--) {
+      if (!newAtkLog[i].hitTime) {newAtkLog[i].hitTime = newAtkLog[i].time}
+      newAtkLog[i].id = i
+    }
+    console.log(matchData.data.spike_log[spikeLogIndex].atkLog)
+    setHpData(matchData.data.spike_hp[spikeIndex].hpLog)
+    setAtkData(newAtkLog)
+  }
  
   // const tableHeadStyle = { color: "white", fontSize: "18px", textAlign: "center" }
   // const tableBodyStyle = { color: "white", fontWeight: "bold", textAlign: "center", fontSize: "12px" }
@@ -68,62 +79,9 @@ export default function SpikeTable(props) {
         columns={columns}
         pageSize={100}
         rowsPerPageOptions={[5]}
+        disableSelectionOnClick={true}
+        onRowClick={(rowData) => handleSelectSpike(rowData.row)}
       /> : null}
     </div>
-    // <TableContainer style={{ boxShadow: "7px 7px 7px black" }}>
-    //     <Table key="offenseTable" style={{ boxShadow: "7px 7px 5px black", fontWeight: "bolder", fontSize: "18px", background: "grey" }}>
-    //         <TableHead>
-    //             <TableRow style={{ textAlign: 'center', background: "linear-gradient(0deg, rgba(0,0,0,1) 31%, rgba(31,31,31,1) 60%, rgba(70,70,70,1) 91%)" }}>
-    //                 <TableCell style={tableHeadStyle}>#</TableCell>
-    //                 <TableCell width="20%" style={tableHeadStyle}>player</TableCell>
-    //                 <TableCell style={tableHeadStyle}>team</TableCell>
-    //                 <TableCell style={tableHeadStyle}>Start</TableCell>
-    //                 <TableCell style={tableHeadStyle}>Attackers</TableCell>
-    //                 <TableCell style={tableHeadStyle}>Attacks</TableCell>
-    //                 <TableCell style={tableHeadStyle}>Duration</TableCell>
-    //                 <TableCell style={tableHeadStyle}>HP Start</TableCell>
-    //                 <TableCell style={tableHeadStyle}>HP Loss</TableCell>
-    //                 <TableCell style={tableHeadStyle}>G. Avail</TableCell>
-    //                 <TableCell style={tableHeadStyle}>G. Used</TableCell>
-    //                 <TableCell style={tableHeadStyle}>Dam Window</TableCell>
-    //                 <TableCell style={tableHeadStyle}>Death</TableCell>
-    //             </TableRow>
-    //         </TableHead>
-    //         <TableBody>
-    //             {tableDispaly.length ? tableDispaly.map(data => {
-    //                 let teamStyle;
-    //                 if (data.team === "BLU") { teamStyle = blueTeam }
-    //                 if (data.team === "RED") { teamStyle = redTeam }
-    //                 return (
-    //                     data.otp > 0.01 ?
-    //                     <TableRow style={teamStyle} key={data.player}>
-    //                         <TableCell style={tableBodyStyle}>{data.player}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.team}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.powersets}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.deaths}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.targets}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.otp > 0.01 ? (data.otp * 100).toFixed(2) + '%' : null}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.atks}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.atksOn}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.atksOff}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{parseFloat(data.timing).toFixed(3)}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{parseFloat(data.variance).toFixed(3)}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.kPart > 0.01 ? (data.kPart * 100).toFixed(2) + '%' : null}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.atksOnDeath}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.atksBeforePS}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.atksAfterDeath}</TableCell>
-    //                         <TableCell style={tableBodyStyle}>{data.atksIntoPS}</TableCell>
-    //                     </TableRow>
-    //                     :
-    //                     null
-    //                 )
-
-    //             })
-    //                 :
-    //                 null}
-    //         </TableBody>
-    //     </Table>
-    // </TableContainer>
-
   )
 }

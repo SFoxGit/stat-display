@@ -7,10 +7,14 @@ import SpikeTeamChart from '../SpikeTeam/spike.team.chart'
 // import Switch from '@material-ui/core/Switch';
 import { Box } from '@material-ui/core'
 import SpikeTable from '../SpikeTable/spike.table'
+import SpikeHP from '../SpikeHP/spike.hp'
+import SpikeIndividual from '../SpikeIndividual/spike.individual'
 
 export default function SpikeMain(props) {
   const [redData, setRedData] = useState([])
   const [blueData, setblueData] = useState([])
+  const [hpData, setHpData] = useState([])
+  const [atkData, setAtkData] = useState([])
   const matchData = props.matchData
   // const redChange = (event) => {
   //   setDisplayRed(event.target.checked)
@@ -116,8 +120,11 @@ export default function SpikeMain(props) {
         </FormControl> */}
         <SpikeTeamChart redData={redData} blueData={blueData} />
       </Box>
-      <SpikeTable matchData={matchData}/>
-
+      <Box style={{ width: "100%", height: "400px", backgroundColor: "white" , display: 'flex'}}>
+        {hpData.length ? <SpikeHP hpData={hpData} /> : null}
+        {atkData.length ? <SpikeIndividual atkData={atkData} /> : null}
+      </Box>
+      <SpikeTable setAtkData={setAtkData} setHpData={setHpData} matchData={matchData} />
     </div>
   )
 }

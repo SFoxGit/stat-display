@@ -9,7 +9,6 @@ import {
   Legend,
   ResponsiveContainer
 } from "recharts";
-import Container from '@material-ui/core/Container';
 
 export default function ScoreChart(props) {
   const scoreLog = props.scoreLog
