@@ -62,7 +62,7 @@ export default function SpikeTeamChart(props) {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis type="number" domain={['auto', 'auto']} dataKey="start" />
-        <YAxis />
+        <YAxis domain={[0, 16]}/>
         <Tooltip content={<CustomTooltip />} />
         <ReferenceLine y={0} stroke="#000" />
         <Brush dataKey="start" height={30} stroke="#8884d8" />
@@ -85,7 +85,7 @@ export default function SpikeTeamChart(props) {
       >
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis type="number" domain={['auto', 'auto']} dataKey="start" />
-        <YAxis />
+        <YAxis domain={[0, 16]}/>
         <Tooltip content={<CustomTooltip />} />
         <ReferenceLine y={0} stroke="#000" />
         <Bar dataKey="attackers" stackId="a" shape={CustomBar}>

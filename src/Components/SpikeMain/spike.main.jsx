@@ -6,6 +6,7 @@ import SpikeTeamChart from '../SpikeTeam/spike.team.chart'
 // import FormControlLabel from '@material-ui/core/FormControlLabel';
 // import Switch from '@material-ui/core/Switch';
 import { Box } from '@material-ui/core'
+import SpikeTable from '../SpikeTable/spike.table'
 
 export default function SpikeMain(props) {
   const [redData, setRedData] = useState([])
@@ -115,6 +116,7 @@ export default function SpikeMain(props) {
         </FormControl> */}
         <SpikeTeamChart redData={redData} blueData={blueData} />
       </Box>
+      <SpikeTable matchData={matchData}/>
 
     </div>
   )
