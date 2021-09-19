@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import DisplaySelection from '../Display/display-selection';
 import { Box } from '@material-ui/core';
 import Offense from '../Offense/offense';
+import SpikeMain from '../SpikeMain/spike.main';
 
 
 const registry = [
@@ -430,6 +431,11 @@ export default function Matches() {
         <Offense summaryStats={summaryStats} matchData={matchData}/>
         :
         null}
+        {disp === 75 ?
+        <SpikeMain matchData={matchData}/>
+      :
+      null
+      }
 
     </Grid>
 
