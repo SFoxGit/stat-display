@@ -1,0 +1,15 @@
+Area chart - Greenslog
+SpikeLog - 
+  id = spike_summary.id
+  start = spike_summary.start (X Axis)
+  duration = spike_summary.duration (Top of bar Y Axis)
+  sort spike_log by hit time, [0] = Bottom of bar Y Axis
+  death = spike_summary.death
+  (if death) filter spike_log for death set time plot with scatter scatter 3
+  filter spike_log for caster = selection plot with scatter = hitTime scatter 4
+
+  filter spike_summary for player = selection plot scatter start if death scatter 1, survive scatter 2
+
+Bar = [[firstHit, duration],[]]
+Scatter1 = deathTime
+Scatter2 = 
