@@ -21,6 +21,17 @@ export default function Offense(props) {
       let newArr = []
       newArr = [...redSpikes]
       const targetKill = redSpikes.filter(element => element.death === "1")
+      const redSpikeLog = matchData.data.spike_log.filter(element => element.team === "BLU")
+      for (let i = redSpikeLog.length-1; i>=0; i--) {
+        const summaryRelated = newArr.find(element => element.id === redSpikeLog[i].id)
+        const playerAttacks = redSpikeLog[i].atkLog.filter(element => element.caster === playerName)
+        if (playerAttacks.length) {
+          summaryRelated.playerFirst = playerAttacks[0].hitTime
+        }
+        if (playerAttacks[1]) {
+          summaryRelated.playerSecond = playerAttacks[1].hitTime
+        }
+      }
       const playerSpikes = blueSpikes.filter(element => element.player === playerName)
       const playerDeaths = playerSpikes.filter(element => element.death === "1")
       const playerSurvive = playerSpikes.filter(element => element.death === "0")
@@ -36,6 +47,17 @@ export default function Offense(props) {
     if (playerTeam === "BLU") {
       const newArr = [...blueSpikes]
       const targetKill = blueSpikes.filter(element => element.death === "1")
+      const blueSpikeLog = matchData.data.spike_log.filter(element => element.team === "RED")
+      for (let i = blueSpikeLog.length-1; i>=0; i--) {
+        const summaryRelated = newArr.find(element => element.id === blueSpikeLog[i].id)
+        const playerAttacks = blueSpikeLog[i].atkLog.filter(element => element.caster === playerName)
+        if (playerAttacks.length) {
+          summaryRelated.playerFirst = playerAttacks[0].hitTime
+        }
+        if (playerAttacks[1]) {
+          summaryRelated.playerSecond = playerAttacks[1].hitTime
+        }
+      }
       const playerSpikes = redSpikes.filter(element => element.player === playerName)
       const playerDeaths = playerSpikes.filter(element => element.death === "1")
       const playerSurvive = playerSpikes.filter(element => element.death === "0")
@@ -59,7 +81,8 @@ export default function Offense(props) {
     }
     for (let i = blueArray.length - 1; i >= 0; i--) {
       const index = spikeLog.findIndex(element => element.id === blueArray[i].id)
-      blueArray[i].firstHit = spikeLog[index].atkLog[0].hitTime
+      const first = spikeLog[index].atkLog.find(element => element.team === "BLU" && element.atk !== "enervating field" && element.atk !== "corrosive enzyme" && element.hitTime !== "")
+      blueArray[i].firstHit = first.hitTime
       if (blueArray[i].death === "1") {
         const deathIndex = spikeLog[index].atkLog.findIndex(element => element.atk === "death")
         blueArray[i].deathTime = spikeLog[index].atkLog[deathIndex].hitTime
@@ -67,7 +90,8 @@ export default function Offense(props) {
     }
     for (let i = redArray.length - 1; i >= 0; i--) {
       const index = spikeLog.findIndex(element => element.id === redArray[i].id)
-      redArray[i].firstHit = spikeLog[index].atkLog[0].hitTime
+      const first = spikeLog[index].atkLog.find(element => element.team === "RED" && element.atk !== "enervating field" && element.atk !== "corrosive enzyme" && element.hitTime !== "")
+      redArray[i].firstHit = first.hitTime
       if (redArray[i].death === "1") {
         const deathIndex = spikeLog[index].atkLog.findIndex(element => element.atk === "death")
         redArray[i].deathTime = spikeLog[index].atkLog[deathIndex].hitTime
