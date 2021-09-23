@@ -23,11 +23,11 @@ export default function PlayerChart(props) {
     return data.playerSurvive || null
   }
   const getBarValues = data => {
-    return [data.firstHit, data.duration]
+    return [data.firstHit, data.spikeEnd]
   }
   const getTest = data => {
-    if (data.duration) {
-      return [data.start * 2, data.duration]
+    if (data.spikeEnd) {
+      return [data.start * 2, data.spikeEnd]
     } else { return null }
   }
   return (

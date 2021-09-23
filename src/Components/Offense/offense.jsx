@@ -24,14 +24,20 @@ export default function Offense(props) {
       const redSpikeLog = matchData.data.spike_log.filter(element => element.team === "BLU")
       for (let i = redSpikeLog.length-1; i>=0; i--) {
         const summaryRelated = newArr.find(element => element.id === redSpikeLog[i].id)
+        summaryRelated.playerFirst = null
+        summaryRelated.playerSecond = null
+        const teamAtks = redSpikeLog[i].atkLog.filter(element => element.team === "RED")
+        teamAtks.sort((a, b) => parseFloat(a.hitTime) - parseFloat(b.hitTime))
+        summaryRelated.spikeEnd = teamAtks[teamAtks.length-1].hitTime
         const playerAttacks = redSpikeLog[i].atkLog.filter(element => element.caster === playerName)
         if (playerAttacks.length) {
-          summaryRelated.playerFirst = playerAttacks[0].hitTime
+          summaryRelated.playerFirst = parseFloat(playerAttacks[0].hitTime)
         }
         if (playerAttacks[1]) {
-          summaryRelated.playerSecond = playerAttacks[1].hitTime
+          summaryRelated.playerSecond = parseFloat(playerAttacks[1].hitTime)
         }
       }
+      console.log(newArr)
       const playerSpikes = blueSpikes.filter(element => element.player === playerName)
       const playerDeaths = playerSpikes.filter(element => element.death === "1")
       const playerSurvive = playerSpikes.filter(element => element.death === "0")
