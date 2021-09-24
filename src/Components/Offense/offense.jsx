@@ -37,7 +37,6 @@ export default function Offense(props) {
           summaryRelated.playerSecond = parseFloat(playerAttacks[1].hitTime)
         }
       }
-      console.log(newArr)
       const playerSpikes = blueSpikes.filter(element => element.player === playerName)
       const playerDeaths = playerSpikes.filter(element => element.death === "1")
       const playerSurvive = playerSpikes.filter(element => element.death === "0")
@@ -46,8 +45,6 @@ export default function Offense(props) {
       playerSurvive.forEach(element => newArr.push({ start: element.start, playerSurvive: element.duration }))
       newArr.forEach(element => element.start = parseFloat(element.start))
       newArr.sort((a, b) => a.start - b.start)
-      console.log("out array")
-      console.log(newArr)
       setTeamSpikes(newArr)
     }
     if (playerTeam === "BLU") {
