@@ -9,9 +9,6 @@ export default function Offense(props) {
   const [player, setPlayer] = useState()
   const [redSpikes, setRedSpikes] = useState([])
   const [blueSpikes, setBlueSpikes] = useState([])
-  // const [playerDeath, setPlayerDeath] = useState([])
-  // const [playerSurvive, setPlayerSurvive] = useState([])
-  // const [targetDeath, setTargetDeath] = useState([])
   const [teamSpikes, setTeamSpikes] = useState([])
 
   const updatePlayer = (playerName, playerTeam) => {
