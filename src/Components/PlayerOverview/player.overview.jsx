@@ -8,12 +8,9 @@ import TableRow from '@material-ui/core/TableRow';
 
 export default function PlayerOverview(props) {
   const summaryStats = props.summaryStats
-  // const setSummaryStats = props.setSummaryStats
   const matchIndex = props.matchIndex
-  // const matchData = props.matchData
 
   const blueTeam = {
-    // background: "rgb(2,0,36)",
     background: "linear-gradient(0deg, rgba(0,0,84,1) 31%, rgba(0,0,143,1) 60%, rgba(0,0,227,1) 91%)",
     textShadow: "2px 2px black"
     };
