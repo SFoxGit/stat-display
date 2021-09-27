@@ -9,7 +9,6 @@ import {
   CartesianGrid,
   Tooltip,
   Rectangle,
-  Legend,
   LabelList
 } from "recharts";
 
